@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\CeasarCypher\Ceasar.cpp">
+    <ClCompile Include="..\Ceasar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\CeasarCypher\console(v1.8).cpp">
+    <ClCompile Include="..\console(v1.8).cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\CeasarCypher\console(v1.8).h">
+    <ClInclude Include="..\console(v1.8).h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
