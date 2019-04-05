@@ -5,28 +5,56 @@
 
 bool AnotherOperation();
 void ClearBuffer();
+int RotInputValidation();
 
+int RotInputValidation()
+{
+	int Rot, x, y;
+	bool valid = true;
+	x = wherex();
+	y = wherey();
 
+	do
+	{
+		gotoxy(x, y);
+		clreoscr();
+		ClearBuffer();
 
+		cin >> Rot;
+		if (Rot >= 0 && Rot <= 1000 && !cin.fail())
+			valid = true;
+		else
+			valid = false;
+		
+	} while (!valid);
+
+		return Rot;
+}
 void ClearBuffer()
 {
 	if (cin.fail()) cin.clear();			
 	cin.ignore(cin.rdbuf()->in_avail());	
 	while (_kbhit()) _getch();
 }
-
 bool AnotherOperation()
 {
 	char input;
+	int x, y;
 
-	cout << "\n\n\tDo you want to do an another rotation? 'Y' or 'N' ";
+
+	cout << "\n\n\tDo you want to do an another encryption? 'Y' or 'N' \t";
+	x = wherex();
+	y = wherey();
 		do 
 		{
+			gotoxy(x, y);
 			ClearBuffer();
 			input = _getch();
-		} while (input != 'y' && input != 'n');
+			input = toupper(input);
+			cout << input;
+		} while (input != 'Y' && input != 'N');
 		
-		if (input == 'y')
+		if (input == 'Y')
 			return true;
 		else
 			return false;
@@ -37,7 +65,7 @@ using namespace std;
 void main()
 {
 	/*Constantes*/
-	string AlphabetUP = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", AlphabetLOW = "abcdefghijklmnopqrstuvwxyz", Text, Version = "Ver: 2.0", 
+	string AlphabetUP = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", AlphabetLOW = "abcdefghijklmnopqrstuvwxyz", Text, Version = "Ver: 2.1", 
 		Title = R"(
 		   ___                                   ___                _                 
 		  / __\  ___   __ _  ___   __ _  _ __   / __\ _   _  _ __  | |__    ___  _ __ 
@@ -69,11 +97,11 @@ void main()
 		getline(cin, Text);
 
 		cout << "\n\tNumber of rotations : ";
-		cin >> Rot;
+		Rot = RotInputValidation();
+		
 
 		cout << "\n\tResult	: ";
 
-	
 	
 		for (int j = 0; j < Text.size(); j++)
 		{
